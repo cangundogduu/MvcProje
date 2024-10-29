@@ -26,5 +26,14 @@ namespace MvcProje.Controllers
 
             return View();
         }
+        public ActionResult Bilgi()
+        {
+            return View();
+        }
+
+        public ActionResult Profil()
+        {
+            return View();
+        }
     }
 }
