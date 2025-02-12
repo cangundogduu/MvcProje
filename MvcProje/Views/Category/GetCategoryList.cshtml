@@ -1,4 +1,5 @@
-﻿
+﻿@using Entity.Concrete
+@model List<Category>
 @{
     Layout = null;
 }
@@ -16,16 +17,17 @@
         <th>Durum</th>
         <th>Güncelle</th>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button class="btn btn-success">Güncelle</button></td>
-
-    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CategortyDescription</td>
+            <td>@item.CategoryStatus</td>
+            <td><button class="btn btn-success">Güncelle</button></td>
+        </tr>
+    }
 
 </table>
-<button class="btn btn-info">Yeni Kategori</button>
-<button class="btn btn-warning">Kategori Listesi</button>
-<button class="btn btn-danger">Kategori Açıklamaları</button>
+<br />
+<a class="btn btn-info" href="/Category/AddCategory">Yeni Kategori Ekle</a>
