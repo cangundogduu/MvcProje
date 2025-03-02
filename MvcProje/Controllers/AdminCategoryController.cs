@@ -45,5 +45,40 @@ namespace MvcProje.Controllers
             }
             return View();
         }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            var categoryValue=cm.GetById(id);
+            cm.CategoryRemoveBL(categoryValue);
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public ActionResult EditCategory(int id)
+        {
+            var categoryValue = cm.GetById(id);
+            return View(categoryValue);
+        }
+
+        [HttpPost]
+        public ActionResult EditCategory(Category p)
+        {
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult result = categoryValidator.Validate(p);
+            if (result.IsValid)
+            {
+                cm.CategoryUpdate(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
     }
 }

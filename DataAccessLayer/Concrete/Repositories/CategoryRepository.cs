@@ -20,6 +20,11 @@ namespace DataAccessLayer.Concrete.Repositories
             context.SaveChanges();
         }
 
+        public Category Get(Expression<Func<Category, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Category> GetAll()
         {
             throw new NotImplementedException();
