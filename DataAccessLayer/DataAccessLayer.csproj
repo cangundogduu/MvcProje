@@ -71,6 +71,14 @@
     <Compile Include="Migrations\202502021549233_mig1.Designer.cs">
       <DependentUpon>202502021549233_mig1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503032016251_mig_writer_edit.cs" />
+    <Compile Include="Migrations\202503032016251_mig_writer_edit.Designer.cs">
+      <DependentUpon>202503032016251_mig_writer_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503032028406_mig_writer_edit2.cs" />
+    <Compile Include="Migrations\202503032028406_mig_writer_edit2.Designer.cs">
+      <DependentUpon>202503032028406_mig_writer_edit2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +95,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202502021549233_mig1.resx">
       <DependentUpon>202502021549233_mig1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503032016251_mig_writer_edit.resx">
+      <DependentUpon>202503032016251_mig_writer_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503032028406_mig_writer_edit2.resx">
+      <DependentUpon>202503032028406_mig_writer_edit2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
