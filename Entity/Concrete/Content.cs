@@ -16,8 +16,9 @@ namespace Entity.Concrete
         public string ContentValue { get; set; }
 
         public DateTime ContentDate { get; set; }
-        
-        
+        public bool ContentStatus { get; set; }
+
+
         //Heading Navigation Property
         public int HeadingId { get; set; }
         public virtual Heading  Heading{ get; set; }
