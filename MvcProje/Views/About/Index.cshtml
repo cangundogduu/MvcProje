@@ -1,0 +1,57 @@
+﻿@using Entity.Concrete
+@model List<About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımda Veri Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+
+        <th>#</th>
+        <th>Hakkımda Başlığı</th>
+        <th>Aktif Yap</th>
+        <th>Hakkımda Görsel 2</th>
+        <th>İşlemler</th>
+    </tr>
+
+
+</table>
+
+
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#modal-1">
+    Yeni Hakkımızda Yazı Girişi
+</button>
+
+<div class="modal" id="modal-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hakkımızda Metin Girişi</h5>
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/About/AddAbout" method="post">
+                    <label>Hakkımda Metin 1 </label>
+                    <input type="text" name="AboutDetails1" class="form-control" />
+                    <br />
+                    <label>Hakkımda Metin 2 </label>
+                    <input type="text" name="AboutDetails2" class="form-control" />
+                    <br />
+                    <label>Hakkımda Görsel 1 </label>
+                    <input type="text" name="AboutImage1" class="form-control" />
+                    <br />
+                    <label>Hakkımda Görsel 2 </label>
+                    <input type="text" name="AboutImage2" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Kaydet</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
