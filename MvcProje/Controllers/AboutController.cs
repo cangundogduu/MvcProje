@@ -38,7 +38,10 @@ namespace MvcProje.Controllers
         }
 
 
-
+        public PartialViewResult AboutPartial()
+        {
+            return PartialView();
+        }
 
     }
 }
