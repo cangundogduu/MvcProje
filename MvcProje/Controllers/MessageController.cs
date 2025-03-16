@@ -15,15 +15,29 @@ namespace MvcProje.Controllers
         public ActionResult Inbox()
         {
             var messageList = messageManager.GetListInbox();
+            ViewBag.InboxMessageCount = messageList.Count;
             return View(messageList);
         }
 
         public ActionResult Sendbox() 
         {
             var messageList= messageManager.GetListSendbox();
+            ViewBag.SendboxMessageCount = messageList.Count;
             return View(messageList);
         }
 
+
+        public ActionResult GetInboxDetails(int id)
+        {
+            var messageValue = messageManager.GetById(id);
+            return View(messageValue);
+        }
+
+        public ActionResult GetSendboxDetails(int id)
+        {
+            var messageValue = messageManager.GetById(id);
+            return View(messageValue);
+        }
 
 
         public ActionResult NewMessage() 
