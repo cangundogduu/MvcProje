@@ -29,6 +29,7 @@ namespace MvcProje.Controllers
 
         public PartialViewResult MessageListMenu()
         {
+           
             ViewBag.InboxMessageCount = messageManager.GetListInbox().Count;
             ViewBag.SendboxMessageCount = messageManager.GetListSendbox().Count;
             return PartialView();
