@@ -11,6 +11,7 @@ namespace BusinessLayer.Abstract
     {
         Admin GetById(int id);
 
+        Admin GetByAdminName(string username);
         Admin GetByAdmin(string username, string password);
         void AdminUpdate(Admin admin);
         void AdminAdd (Admin admin);

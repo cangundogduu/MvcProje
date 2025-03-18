@@ -14,5 +14,7 @@ namespace BusinessLayer.Abstract
         About GetById(int id);
         void AboutDelete(About about);
         void AboutUpdate(About about);
+
+        void AboutUpdateByStatus(bool status);
     }
 }

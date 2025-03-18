@@ -43,5 +43,34 @@ namespace MvcProje.Controllers
             return PartialView();
         }
 
+
+        public ActionResult ChangeStatusFalse(int id)
+        {
+            var aboutValue = aboutManager.GetById(id);
+
+            if (aboutValue.Status == true)
+            {
+                aboutValue.Status = false;
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ChangeStatusTrue(int id)
+        {
+            var aboutValue = aboutManager.GetById(id);
+
+            if (aboutValue.Status == false)
+            {
+                aboutValue.Status = true;
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteAbout(int id)
+        {
+            var aboutValue = aboutManager.GetById(id);
+            aboutManager.AboutDelete(aboutValue);
+            return RedirectToAction("Index");
+        }
     }
 }

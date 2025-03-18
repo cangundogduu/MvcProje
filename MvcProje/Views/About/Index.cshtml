@@ -12,8 +12,10 @@
 
         <th>#</th>
         <th>Hakkımda Başlığı</th>
+        <th>Durum</th>
         <th>Aktif Yap</th>
         <th>Pasif Yap</th>
+        <th>Sil</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -21,8 +23,10 @@
         <tr>
             <td>@item.AboutId</td>
             <td>@item.AboutDatails1</td>
-            <td><a href="#" class="btn btn-warning">AktifYap</a></td>
-            <td><a href="#" class="btn btn-danger">PasifYap</a></td>
+            <td>@item.Status</td>
+            <td><a href="/About/ChangeStatusTrue/@item.AboutId" class="btn btn-warning">AktifYap</a></td>
+            <td><a href="/About/ChangeStatusFalse/@item.AboutId" class="btn btn-danger">PasifYap</a></td>
+            <td><a href="/About/DeleteAbout/@item.AboutId" class="btn btn-info">Sil</a></td>
         </tr>
     }
 
