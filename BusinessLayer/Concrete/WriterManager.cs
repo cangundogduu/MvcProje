@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
            return _writerDal.Get(x=>x.WriterId==id);
         }
 
+        public Writer GetByWriter(string email, string password)
+        {
+            return _writerDal.Get(x => x.WriterEmail == email && x.WriterPassword == password);
+        }
+
         public List<Writer> GetList()
         {
            return _writerDal.GetAll();
