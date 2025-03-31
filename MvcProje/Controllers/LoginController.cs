@@ -11,6 +11,7 @@ using System.Web.Security;
 
 namespace MvcProje.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         AdminManager adminManager = new AdminManager(new EfAdminDal());
@@ -63,6 +64,13 @@ namespace MvcProje.Controllers
                 return View(writerUserInfo);
             }
             
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Headings", "Default");
         }
 
 

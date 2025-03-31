@@ -11,6 +11,7 @@ namespace MvcProje.Controllers.WriterControllers
 {
     public class WriterPanelController : Controller
     {
+
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         public ActionResult WriterProfile()
@@ -18,11 +19,11 @@ namespace MvcProje.Controllers.WriterControllers
             return View();
         }
 
-        public ActionResult MyHeading()
+        public ActionResult MyHeading(string emailaddress)
         {
-            
-            var values = hm.GetListByWriter();
-            return View(values);
+            emailaddress= (string)Session["WriterEmail"];
+            var writeridinfo = hm.GetByWriterEmail(emailaddress); 
+            return View(writeridinfo);
         }
 
         [HttpGet]
@@ -44,8 +45,10 @@ namespace MvcProje.Controllers.WriterControllers
         [HttpPost]
         public ActionResult NewHeading(Heading heading)
         {
+
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            heading.WriterId = 4; //Sessiondan gelecek
+            heading.WriterId = hm.GetByWriterEmail((string)Session["WriterEmail"]).FirstOrDefault().WriterId;
+
             heading.HeadingStatus = true;
             hm.HeadingAdd(heading);
             return RedirectToAction("MyHeading");
@@ -82,6 +85,12 @@ namespace MvcProje.Controllers.WriterControllers
             HeadingValue.HeadingStatus = false;
             hm.HeadingDelete(HeadingValue);
             return RedirectToAction("MyHeading");
+        }
+
+        public ActionResult AllHeading()
+        {
+            var headings = hm.GetList();
+            return View(headings);
         }
 
     }
