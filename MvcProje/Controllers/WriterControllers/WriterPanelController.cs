@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using Entity.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,50 @@ namespace MvcProje.Controllers.WriterControllers
 
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-        public ActionResult WriterProfile()
+        WriterManager wm = new WriterManager(new EfWriterDal());
+        WriterValidator writerValidator = new WriterValidator();
+
+
+        [HttpGet]
+        public ActionResult WriterProfile(int id)
         {
+
+
+            var writerEmail = (string)Session["WriterEmail"];
+            var writerPassword = (string)Session["WriterPassword"];
+
+
+            var writer = wm.GetByWriter(writerEmail, writerPassword);
+            var getWriterValue = wm.GetById(writer.WriterId);
+
+            return View(getWriterValue);
+
+
+        }
+
+
+        [HttpPost]
+        public ActionResult WriterProfile(Writer writer)
+        {
+
+            ValidationResult results = writerValidator.Validate(writer);
+            if (results.IsValid)
+            {
+                wm.WriterUpdate(writer);
+                return RedirectToAction("AllHeading","WriterPanel");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
         }
+
+
+
 
         public ActionResult MyHeading(string emailaddress)
         {

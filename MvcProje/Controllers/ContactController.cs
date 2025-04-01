@@ -29,11 +29,11 @@ namespace MvcProje.Controllers
             return View(contactValue);
         }
 
-        public PartialViewResult MessageListMenu()
+        public PartialViewResult MessageListMenu(string Email)
         {
-           
-            ViewBag.InboxMessageCount = messageManager.GetListInbox().Count;
-            ViewBag.SendboxMessageCount = messageManager.GetListSendbox().Count;
+            
+            ViewBag.InboxMessageCount = messageManager.GetListInbox(Email).Count;
+            ViewBag.SendboxMessageCount = messageManager.GetListSendbox(Email).Count;
             return PartialView();
         }
     }
